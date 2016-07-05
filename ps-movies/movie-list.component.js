@@ -18,11 +18,8 @@
         model.$onInit = function() {
             fetchMovies($http).then(function(movies) {
                 model.movies = movies;    
-            });
-        };
-        
-        model.goTo = function(id) {
-            model.$router.navigate(["Details", {id:id}]);
+            });             
+
         };
         
         model.upRating = function(movie) {
@@ -36,15 +33,24 @@
                 movie.rating -= 1;
             }
         };
+        
+        model.setRating = function(movie, rating) { 
+            movie.rating = rating;
+        };
+        
+        model.goTo = function(id) {
+            model.$router.navigate(["Details", {id:id}, "Overview"]);  
+        };
     }
 
     module.component("movieList", {
+        bindings: {
+            "$router": "<",
+            "valtestls":"<"
+        },
         templateUrl: "/ps-movies/movie-list.component.html",
         controllerAs: "model",
-        controller: ["$http", controller],
-        bindings: {
-            "$router": "<"
-        }
+        controller: ["$http", controller]
     });
 
 } ());

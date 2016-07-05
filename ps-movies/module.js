@@ -1,12 +1,18 @@
 (function() {
     "use strict";
 
-    var module = angular.module("psMovies", ["ngComponentRouter"]);
+    /*  var module = angular.module("psMovies", ["ngRoute"]);
     
-    module.value("$routerRootComponent", "movieApp");
+       module.config(function($routeProvider) {
+       
+       $routeProvider
+            .when("/list", { template: "<movie-list></movie-list>"})
+            .otherwise({ redirectTo: "/list"});
         
-    module.component("appAbout",{
-       template: "This is the about page" 
     });
+  */  
+
+    var module = angular.module("psMovies", ["ngComponentRouter", "ngAnimate"]);
+    module.value("$routerRootComponent", "movieApp");
 
 }());
